@@ -1,0 +1,52 @@
+.course-list-container {
+  font-family: 'Arial', sans-serif;
+}
+
+.header-section {
+  background: linear-gradient(90deg, #007bff, #00c4cc);
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.courses-section {
+  background-color: #f8f9fa;
+}
+
+.course-card {
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: #333;
+  font-weight: 600;
+}
+
+.card-text {
+  color: #666;
+}
+
+.btn-primary {
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.stretched-link {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .row-cols-md-2 {
+    flex-direction: column;
+  }
+}

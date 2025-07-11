@@ -1,14 +1,33 @@
-<div class="container mt-5">
-  <h2>Liste des Cours</h2>
-  <div *ngIf="courses?.length; else noCourses">
-    <div *ngFor="let course of courses" class="list-group">
-      <a class="list-group-item list-group-item-action" routerLink="/course/{{course.id}}">
-        {{ course.name }} - {{ course.description }}
-      </a>
+<div class="course-list-container">
+  <section class="header-section text-center py-5">
+    <h2 class="display-5 fw-bold">Liste des Cours</h2>
+  </section>
+
+  <section class="courses-section py-5">
+    <div class="container">
+      @if (courses.length) {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          @for (course of courses; track course.id) {
+            <div class="col">
+              <div class="card h-100 shadow-sm course-card">
+                <div class="card-body">
+                  <h5 class="card-title">{{ course.name }}</h5>
+                  <p class="card-text">{{ course.description }}</p>
+                  <a routerLink="/course/{{course.id}}" class="btn btn-primary stretched-link">Voir les détails</a>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="text-center">
+          <p class="lead">Aucun cours disponible.</p>
+        </div>
+      }
+
+      <div class="text-center mt-5">
+        <a routerLink="/add-course" class="btn btn-success btn-lg">Ajouter un cours</a>
+      </div>
     </div>
-  </div>
-  <ng-template #noCourses>
-    <p>Aucun cours disponible.</p>
-  </ng-template>
-  <a class="btn btn-success mt-3" routerLink="/add-course">Ajouter un cours</a>
+  </section>
 </div>

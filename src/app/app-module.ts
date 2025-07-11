@@ -9,6 +9,7 @@ import {Home} from './components/home/home';
 import {CourseList} from './components/course-list/course-list';
 import {CourseDetails} from './components/course-details/course-details';
 import {AddCourse} from './components/add-course/add-course';
+import { HttpClientModule } from '@angular/common/http'; // Ajouté ici
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {AddCourse} from './components/add-course/add-course';
     AppRoutingModule,
     CourseList,
     CourseDetails,
-    AddCourse
+    AddCourse,
+    HttpClientModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

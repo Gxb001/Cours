@@ -1,25 +1,29 @@
 import {Component, OnInit} from '@angular/core';
 import {CourseService} from '../../service/course';
-import {NgForOf, NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
+
+interface Course {
+  id: number;
+  name: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.html',
   imports: [
-    NgIf,
-    RouterLink,
-    NgForOf
+    RouterLink
   ],
   styleUrl: './course-list.css'
 })
 export class CourseList implements OnInit {
-  courses: any[] = [];
+  courses: Course[] = [];
 
-  constructor(private courseService: CourseService) {
-  }
+  constructor(private courseService: CourseService) {}
 
   ngOnInit() {
-    this.courseService.getCourses().subscribe(data => this.courses = data);
+    this.courseService.getCourses().subscribe(data => {
+      this.courses = data; // Assignation des données
+    });
   }
 }
