@@ -1,14 +1,14 @@
-import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule, provideBrowserGlobalErrorListeners} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing-module';
-import { App } from './app';
-import { Header } from './shared/header/header';
-import { Footer } from './shared/footer/footer';
-import { Home } from './components/home/home';
-import { CourseList } from './components/course-list/course-list';
-import { CourseDetails } from './components/course-details/course-details';
-import { AddCourse } from './components/add-course/add-course';
+import {AppRoutingModule} from './app-routing-module';
+import {App} from './app';
+import {Header} from './shared/header/header';
+import {Footer} from './shared/footer/footer';
+import {Home} from './components/home/home';
+import {CourseList} from './components/course-list/course-list';
+import {CourseDetails} from './components/course-details/course-details';
+import {AddCourse} from './components/add-course/add-course';
 
 @NgModule({
   declarations: [
@@ -29,4 +29,5 @@ import { AddCourse } from './components/add-course/add-course';
   ],
   bootstrap: [App]
 })
-export class AppModule { }
+export class AppModule {
+}

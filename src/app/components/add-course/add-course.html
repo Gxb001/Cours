@@ -2,14 +2,15 @@
   <h2>Ajouter un Cours</h2>
   <form #courseForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label for="name" class="form-label">Nom</label>
-      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newCourse.name" required>
+      <label class="form-label" for="name">Nom</label>
+      <input [(ngModel)]="newCourse.name" class="form-control" id="name" name="name" required type="text">
     </div>
     <div class="mb-3">
-      <label for="description" class="form-label">Description</label>
-      <textarea class="form-control" id="description" name="description" [(ngModel)]="newCourse.description" required></textarea>
+      <label class="form-label" for="description">Description</label>
+      <textarea [(ngModel)]="newCourse.description" class="form-control" id="description" name="description"
+                required></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!courseForm.valid">Ajouter</button>
-    <a routerLink="/courses" class="btn btn-secondary ms-2">Annuler</a>
+    <button [disabled]="!courseForm.valid" class="btn btn-primary" type="submit">Ajouter</button>
+    <a class="btn btn-secondary ms-2" routerLink="/courses">Annuler</a>
   </form>
 </div>

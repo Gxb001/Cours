@@ -1,7 +1,7 @@
-<div class="container mt-5" *ngIf="course">
-  <h2>{{course.name}}</h2>
-  <p><strong>Description :</strong> {{course.description}}</p>
-  <a routerLink="/courses" class="btn btn-secondary">Retour</a>
+<div *ngIf="course" class="container mt-5">
+  <h2>{{ course.name }}</h2>
+  <p><strong>Description :</strong> {{ course.description }}</p>
+  <a class="btn btn-secondary" routerLink="/courses">Retour</a>
 </div>
 <div *ngIf="!course" class="container mt-5">
   <p>Cours non trouvé.</p>

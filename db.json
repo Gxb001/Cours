@@ -1,19 +1,79 @@
 {
   "courses": [
-    { "id": 1, "name": "Mathématiques", "description": "Cours de maths niveau débutant" },
-    { "id": 2, "name": "Informatique", "description": "Introduction à la programmation" },
-    { "id": 3, "name": "Physique", "description": "Bases de la physique" },
-    { "id": 4, "name": "Chimie", "description": "Introduction à la chimie" },
-    { "id": 5, "name": "Biologie", "description": "Biologie générale" },
-    { "id": 6, "name": "Histoire", "description": "Histoire mondiale" },
-    { "id": 7, "name": "Géographie", "description": "Géographie physique et humaine" },
-    { "id": 8, "name": "Philosophie", "description": "Introduction à la philosophie" },
-    { "id": 9, "name": "Anglais", "description": "Cours d'anglais débutant" },
-    { "id": 10, "name": "Espagnol", "description": "Cours d'espagnol débutant" },
-    { "id": 11, "name": "Économie", "description": "Principes de l'économie" },
-    { "id": 12, "name": "Gestion", "description": "Bases de la gestion" },
-    { "id": 13, "name": "Droit", "description": "Introduction au droit" },
-    { "id": 14, "name": "Arts plastiques", "description": "Découverte des arts plastiques" },
-    { "id": 15, "name": "Musique", "description": "Initiation à la musique" }
+    {
+      "id": 1,
+      "name": "Mathématiques",
+      "description": "Cours de maths niveau débutant"
+    },
+    {
+      "id": 2,
+      "name": "Informatique",
+      "description": "Introduction à la programmation"
+    },
+    {
+      "id": 3,
+      "name": "Physique",
+      "description": "Bases de la physique"
+    },
+    {
+      "id": 4,
+      "name": "Chimie",
+      "description": "Introduction à la chimie"
+    },
+    {
+      "id": 5,
+      "name": "Biologie",
+      "description": "Biologie générale"
+    },
+    {
+      "id": 6,
+      "name": "Histoire",
+      "description": "Histoire mondiale"
+    },
+    {
+      "id": 7,
+      "name": "Géographie",
+      "description": "Géographie physique et humaine"
+    },
+    {
+      "id": 8,
+      "name": "Philosophie",
+      "description": "Introduction à la philosophie"
+    },
+    {
+      "id": 9,
+      "name": "Anglais",
+      "description": "Cours d'anglais débutant"
+    },
+    {
+      "id": 10,
+      "name": "Espagnol",
+      "description": "Cours d'espagnol débutant"
+    },
+    {
+      "id": 11,
+      "name": "Économie",
+      "description": "Principes de l'économie"
+    },
+    {
+      "id": 12,
+      "name": "Gestion",
+      "description": "Bases de la gestion"
+    },
+    {
+      "id": 13,
+      "name": "Droit",
+      "description": "Introduction au droit"
+    },
+    {
+      "id": 14,
+      "name": "Arts plastiques",
+      "description": "Découverte des arts plastiques"
+    },
+    {
+      "id": 15,
+      "name": "Musique",
+      "description": "Initiation à la musique"
+    }
   ]
 }

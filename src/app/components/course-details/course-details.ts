@@ -15,7 +15,8 @@ import {NgIf} from '@angular/common';
 export class CourseDetails implements OnInit {
   course: any;
 
-  constructor(private route: ActivatedRoute, private courseService: CourseService) {}
+  constructor(private route: ActivatedRoute, private courseService: CourseService) {
+  }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id')!;

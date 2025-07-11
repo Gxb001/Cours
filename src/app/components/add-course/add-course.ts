@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CourseService} from '../../service/course';
 import {Router, RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
@@ -13,9 +13,10 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './add-course.css'
 })
 export class AddCourse {
-  newCourse = { name: '', description: '' };
+  newCourse = {name: '', description: ''};
 
-  constructor(private courseService: CourseService, private router: Router) {}
+  constructor(private courseService: CourseService, private router: Router) {
+  }
 
   onSubmit() {
     this.courseService.addCourse(this.newCourse).subscribe(() => {

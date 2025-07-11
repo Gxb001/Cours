@@ -16,7 +16,8 @@ import {RouterLink} from '@angular/router';
 export class CourseList implements OnInit {
   courses: any[] = [];
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService) {
+  }
 
   ngOnInit() {
     this.courseService.getCourses().subscribe(data => this.courses = data);

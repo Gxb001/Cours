@@ -15,6 +15,7 @@
 .nav-link:hover {
   color: #0056b3 !important;
 }
+
 .nav-link.active {
   color: #007bff !important;
   font-weight: bold;
