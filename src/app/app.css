@@ -1,8 +1,12 @@
-.list-group-item {
-  transition: all 0.3s ease;
+.list-group-item.course-hover-effect {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
 }
 
-.list-group-item:hover {
-  background-color: #f8f9fa;
-  transform: translateX(10px);
+.list-group-item.course-hover-effect:hover {
+  background-color: #e9ecef;
+  transform: translateX(8px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

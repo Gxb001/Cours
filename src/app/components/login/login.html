@@ -1,0 +1,36 @@
+<div class="login-container">
+  <section class="login-section">
+    <div class="container">
+      <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-body p-4">
+              <h2 class="text-center mb-4">Connexion</h2>
+              @if (error) {
+                <div class="alert"
+                     [class.alert-danger]="error.type === 'username' || error.type === 'password' || error.type === 'general'"
+                     role="alert">
+                  {{ error.message }}
+                </div>
+              }
+              <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                  <label class="form-label" for="username">Nom d'utilisateur</label>
+                  <input [(ngModel)]="credentials.username" class="form-control" id="username" name="username"
+                         required type="text">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="password">Mot de passe</label>
+                  <input [(ngModel)]="credentials.password" class="form-control" id="password" name="password"
+                         required type="password">
+                </div>
+                <button [disabled]="!loginForm.valid" class="btn btn-primary w-100 py-2" type="submit">Se connecter
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

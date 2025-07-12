@@ -9,12 +9,13 @@ import {Home} from './components/home/home';
 import {CourseList} from './components/course-list/course-list';
 import {CourseDetails} from './components/course-details/course-details';
 import {AddCourse} from './components/add-course/add-course';
-import { HttpClientModule } from '@angular/common/http'; // Ajouté ici
+import {HttpClientModule} from '@angular/common/http';
+import {Login} from './components/login/login';
+import {FormsModule} from "@angular/forms"; // Ajouté ici
 
 @NgModule({
   declarations: [
     App,
-    Header,
     Footer,
     Home
   ],
@@ -24,7 +25,10 @@ import { HttpClientModule } from '@angular/common/http'; // Ajouté ici
     CourseList,
     CourseDetails,
     AddCourse,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    Login,
+    Header
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

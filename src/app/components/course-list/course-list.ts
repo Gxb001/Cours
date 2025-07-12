@@ -19,7 +19,8 @@ interface Course {
 export class CourseList implements OnInit {
   courses: Course[] = [];
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService) {
+  }
 
   ngOnInit() {
     this.courseService.getCourses().subscribe(data => {
