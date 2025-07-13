@@ -1,59 +1,111 @@
-# Cours
+# Course Management Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+## But du site
 
-## Development server
+Cette application web, développée avec Angular, permet de gérer des cours en ligne. Elle offre aux utilisateurs la possibilité de consulter une liste de cours, d'afficher les détails d'un cours, et, pour les administrateurs, d'ajouter, modifier ou supprimer des cours. Les utilisateurs peuvent se connecter soit en tant qu'utilisateur lambda (lecture seule) soit en tant qu'admin (gestion complète).
 
-To start a local development server, run:
+## Fonctionnement
 
-```bash
-ng serve
-```
+- **Connexion** : Les utilisateurs se connectent via une page de login avec un nom d'utilisateur et un mot de passe. Les rôles ("admin" ou "user") déterminent les permissions.
+- **Pages principales** :
+  - **Accueil** : Page d'accueil avec une introduction.
+  - **Liste des cours** : Affiche tous les cours disponibles.
+  - **Détails d'un cours** : Affiche les informations d'un cours spécifique (modification/suppression pour admin).
+  - **Ajouter un cours** : Formulaire pour créer un nouveau cours (réservé aux admins).
+- **Sécurité** : Les fonctionnalités admin sont protégées par un guard Angular, affichant un message d'accès refusé pour les utilisateurs lambda.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## API
 
-## Code scaffolding
+L'API est simulée avec **json-server**, qui fournit une fausse API REST basée sur un fichier `db.json`. Les endpoints incluent :
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- `GET /courses` : Récupère la liste des cours.
+- `GET /courses/:id` : Récupère un cours spécifique.
+- `POST /courses` : Ajoute un nouveau cours.
+- `PUT /courses/:id` : Met à jour un cours.
+- `DELETE /courses/:id` : Supprime un cours.
+- `GET /users` : Récupère la liste des utilisateurs pour l'authentification.
 
-```bash
-ng generate component component-name
-```
+Le fichier `db.json` contient les données initiales (cours et utilisateurs), et un script `server.js` est utilisé pour forcer la génération des `id` en entier.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Architecture
 
-```bash
-ng generate --help
-```
+- **Frontend** : Développé avec Angular 20+, utilisant des composants organisés dans des dossiers (`components`, `shared`, `service`).
+  - **Composants** : `home`, `course-list`, `course-details`, `add-course`, `login`, `header`, `footer`.
+  - **Services** : `course.service` gère les appels API.
+  - **Guards** : `auth.guard` protège les routes admin.
+- **Styles** : Utilisation de Bootstrap pour la mise en page, avec CSS personnalisé par composant.
+- **Routing** : Géré via `app-routing.module.ts` avec protection des routes.
 
-## Building
+## Lancement du site
 
-To build the project run:
+### Prérequis
 
-```bash
-ng build
-```
+- Node.js et npm installés.
+- `@angular/cli` et `json-server` installés globalement :
+  ```bash
+  npm install -g @angular/cli json-server
+  ```
+- Assure-toi que `db.json` et (optionnellement) `server.js` sont dans le répertoire racine.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Scripts de lancement
 
-## Running unit tests
+Deux scripts sont fournis pour démarrer l'API et le serveur Angular, puis ouvrir l'URL dans le navigateur :
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+#### 1. Script Batch (Windows CMD) - `start-dev.bat`
 
-```bash
-ng test
-```
+- **Contenu** :
+  ```batch
+  @echo off
+  echo Lancement de json-server...
+  start cmd /k json-server --watch .\db.json .\server.js
+  timeout /t 2 /nobreak
+  echo Lancement du serveur Angular...
+  start cmd /k ng serve
+  timeout /t 2 /nobreak
+  echo Ouverture de l'URL dans le navigateur...
+  start http://localhost:4200
+  exit
+  ```
+- **Utilisation** : Double-clique sur `start-dev.bat` ou exécute-le dans une invite de commande.
 
-## Running end-to-end tests
+#### 2. Script PowerShell - `start-dev.ps1`
 
-For end-to-end (e2e) testing, run:
+- **Contenu** :
+  ```powershell
+  # Lancer json-server dans une nouvelle fenêtre
+  Start-Process powershell -ArgumentList "-NoExit", "-Command", "json-server --watch .\db.json .\server.js"
+  Start-Sleep -Seconds 2
+  # Lancer ng serve dans une nouvelle fenêtre
+  Start-Process powershell -ArgumentList "-NoExit", "-Command", "ng serve"
+  Start-Sleep -Seconds 2
+  # Ouvrir l'URL dans le navigateur par défaut
+  Start-Process "http://localhost:4200"
+  Write-Host "Serveurs lancés et URL ouverte. Appuyez sur une touche pour fermer ce script..."
+  Read-Host
+  ```
+- **Utilisation** : Exécute `.\start-dev.ps1` dans PowerShell (après avoir autorisé les scripts avec `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` si nécessaire).
 
-```bash
-ng e2e
-```
+### Étapes manuelles (alternative)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+1. Ouvre un terminal et lance l'API :
+   ```bash
+   json-server --watch .\db.json .\server.js
+   ```
+2. Ouvre un autre terminal et lance Angular :
+   ```bash
+   ng serve
+   ```
+3. Ouvre ton navigateur à `http://localhost:4200`.
 
-## Additional Resources
+### Dépannage
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Si une erreur 404 apparaît, vérifie que `db.json` est correct et que `json-server` est bien lancé.
+- Ajuste l'URL ou le port si nécessaire (ex. : `ng serve --port 4201`).
+
+## Contribution
+
+- Clone le dépôt.
+- Installe les dépendances avec `npm install`.
+- Suis les étapes de lancement ci-dessus.
+
+---
