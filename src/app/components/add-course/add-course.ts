@@ -14,13 +14,30 @@ import {FormsModule} from '@angular/forms';
 })
 export class AddCourse {
   newCourse = {name: '', description: ''};
+  accessDenied: boolean = false;
 
   constructor(private courseService: CourseService, private router: Router) {
+    const currentUser = localStorage.getItem('currentUser');
+    this.accessDenied = currentUser ? JSON.parse(currentUser).role !== 'admin' : true;
   }
 
   onSubmit() {
-    this.courseService.addCourse(this.newCourse).subscribe(() => {
-      this.router.navigate(['/courses']);
-    });
+    if (!this.accessDenied) {
+      this.courseService.addCourse(this.newCourse).subscribe({
+        next: (response) => {
+          const newId = parseInt(String(response.id), 10);
+          if (isNaN(newId)) {
+            console.error('ID retourné invalide:', response.id);
+            this.router.navigate(['/courses']);
+          } else {
+            this.router.navigate([`/course/${newId}`]);
+          }
+        },
+        error: err => {
+          console.error('Erreur lors de l\'ajout:', err);
+          this.accessDenied = true;
+        }
+      });
+    }
   }
 }

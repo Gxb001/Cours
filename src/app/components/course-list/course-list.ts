@@ -24,7 +24,7 @@ export class CourseList implements OnInit {
 
   ngOnInit() {
     this.courseService.getCourses().subscribe(data => {
-      this.courses = data; // Assignation des données
+      this.courses = data;
     });
   }
 }
