@@ -1,8 +1,29 @@
-<div *ngIf="course" class="container mt-5">
-  <h2>{{ course.name }}</h2>
-  <p><strong>Description :</strong> {{ course.description }}</p>
-  <a class="btn btn-secondary" routerLink="/courses">Retour</a>
-</div>
-<div *ngIf="!course" class="container mt-5">
-  <p>Cours non trouvé.</p>
+<div class="container mt-5">
+  @if (course) {
+    <h2>{{ course.name }}</h2>
+    @if (editMode) {
+      <form (ngSubmit)="saveChanges()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="editedCourse.name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control" id="description" [(ngModel)]="editedCourse.description" name="description"
+                    required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Sauvegarder</button>
+        <button type="button" class="btn btn-secondary" (click)="toggleEdit()">Annuler</button>
+      </form>
+    } @else {
+      <p><strong>Description :</strong> {{ course.description }}</p>
+      <a routerLink="/courses" class="btn btn-secondary me-2">Retour</a>
+      @if (isAdmin) {
+        <button class="btn btn-warning me-2" (click)="toggleEdit()">Modifier</button>
+        <button class="btn btn-danger" (click)="deleteCourse()">Supprimer</button>
+      }
+    }
+  } @else {
+    <p>Cours non trouvé.</p>
+  }
 </div>
