@@ -23,8 +23,19 @@ export class CourseList implements OnInit {
   }
 
   ngOnInit() {
-    this.courseService.getCourses().subscribe(data => {
-      this.courses = data;
+    this.courseService.getCourses().subscribe({
+      next: (data) => {
+        if (Array.isArray(data)) {
+          this.courses = data;
+        } else {
+          console.error('Données reçues non valides:', data);
+          this.courses = [];
+        }
+      },
+      error: (err) => {
+        console.error('Erreur lors de la récupération des cours:', err);
+        this.courses = [];
+      }
     });
   }
 }

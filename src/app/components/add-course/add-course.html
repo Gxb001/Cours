@@ -1,16 +1,24 @@
 <div class="container mt-5">
-  <h2>Ajouter un Cours</h2>
-  <form #courseForm="ngForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-      <label class="form-label" for="name">Nom</label>
-      <input [(ngModel)]="newCourse.name" class="form-control" id="name" name="name" required type="text">
+  @if (accessDenied) {
+    <div class="alert alert-danger text-center" role="alert">
+      Vous n'avez pas accès à cette fonctionnalité en tant qu'utilisateur lambda. Seuls les administrateurs peuvent
+      ajouter des cours.
+      <a routerLink="/courses" class="btn btn-secondary mt-3">Retour aux cours</a>
     </div>
-    <div class="mb-3">
-      <label class="form-label" for="description">Description</label>
-      <textarea [(ngModel)]="newCourse.description" class="form-control" id="description" name="description"
-                required></textarea>
-    </div>
-    <button [disabled]="!courseForm.valid" class="btn btn-primary" type="submit">Ajouter</button>
-    <a class="btn btn-secondary ms-2" routerLink="/courses">Annuler</a>
-  </form>
+  } @else {
+    <h2>Ajouter un Cours</h2>
+    <form #courseForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newCourse.name" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="newCourse.description"
+                  required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!courseForm.valid">Ajouter</button>
+      <a routerLink="/courses" class="btn btn-secondary ms-2">Annuler</a>
+    </form>
+  }
 </div>
