@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, switchMap} from 'rxjs';
 
 interface Course {
-  id: number;
+  id: string;
   name: string;
   description: string;
 }
@@ -25,8 +25,14 @@ export class CourseService {
     return this.http.get<Course>(`${this.apiUrl}/courses/${id}`);
   }
 
-  addCourse(course: any): Observable<Course> {
-    return this.http.post<Course>(`${this.apiUrl}/courses`, course);
+  addCourse(course: Omit<Course, 'id'>): Observable<Course> {
+    return this.getCourses().pipe(
+      switchMap(courses => {
+        const maxId = courses.length ? Math.max(...courses.map(c => Number(c.id))) : 0;
+        const courseWithId = {...course, id: String(maxId + 1)};
+        return this.http.post<Course>(`${this.apiUrl}/courses`, courseWithId);
+      })
+    );
   }
 
   updateCourse(id: number, course: any): Observable<Course> {

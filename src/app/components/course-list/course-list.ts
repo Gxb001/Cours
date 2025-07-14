@@ -3,7 +3,7 @@ import {CourseService} from '../../service/course';
 import {RouterLink} from '@angular/router';
 
 interface Course {
-  id: number;
+  id: string;
   name: string;
   description: string;
 }
