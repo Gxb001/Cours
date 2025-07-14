@@ -16,7 +16,7 @@ export class CourseDetails implements OnInit {
   course: any;
   isAdmin: boolean = false;
   editMode: boolean = false;
-  editedCourse = {id: 0, name: '', description: ''}; // id comme number
+  editedCourse = {id: 0, name: '', description: ''};
   accessDenied: "" | null | boolean = false;
 
   constructor(private route: ActivatedRoute, private courseService: CourseService, private router: Router) {

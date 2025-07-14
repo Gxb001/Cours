@@ -20,7 +20,7 @@ export const canActivateAdmin: CanActivateFn = (route, state) => {
   }
   const user = JSON.parse(currentUser);
   if (user.role !== 'admin') {
-    alert("Vous n\'avez pas les droits d'accès à cette page.");
+    alert("Vous n\'avez pas les droits d'accès à cette page. Seulment les administrateurs peuvent accéder à cette page.");
     router.navigate(['/courses']);
     return false;
   }

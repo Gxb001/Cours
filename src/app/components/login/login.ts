@@ -19,7 +19,7 @@ export class Login {
   }
 
   onSubmit() {
-    this.error = null; // Réinitialiser l'erreur avant chaque tentative
+    this.error = null;
     this.courseService.getUsers().subscribe(users => {
       const user = users.find(u => u.username === this.credentials.username);
       if (!user) {
@@ -34,7 +34,6 @@ export class Login {
       localStorage.setItem('currentUser', JSON.stringify({username: user.username, role: user.role}));
       this.router.navigate(['/courses']);
     }, error => {
-      // Gestion d'une erreur réseau ou autre
       this.error = {message: 'Erreur lors de la connexion. Veuillez réessayer.', type: 'general'};
     });
   }
