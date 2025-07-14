@@ -1,6 +1,6 @@
 @echo off
 echo Lancement de json-server...
-start cmd /k json-server --watch .\db.json .\server.js
+start cmd /k json-server --watch .\db.json
 timeout /t 2 /nobreak
 echo Lancement du serveur Angular...
 start cmd /k ng serve

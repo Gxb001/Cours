@@ -1,5 +1,5 @@
 # Lancer json-server dans une nouvelle fenêtre
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "json-server --watch .\db.json .\server.js"
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "json-server --watch .\db.json"
 
 # Attendre 2 secondes
 Start-Sleep -Seconds 2
