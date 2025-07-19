@@ -57,7 +57,7 @@ Deux scripts sont fournis pour démarrer l'API et le serveur Angular, puis ouvri
   ```batch
   @echo off
   echo Lancement de json-server...
-  start cmd /k json-server --watch .\db.json .\server.js
+  start cmd /k json-server --watch .\db.json
   timeout /t 2 /nobreak
   echo Lancement du serveur Angular...
   start cmd /k ng serve
@@ -73,7 +73,7 @@ Deux scripts sont fournis pour démarrer l'API et le serveur Angular, puis ouvri
 - **Contenu** :
   ```powershell
   # Lancer json-server dans une nouvelle fenêtre
-  Start-Process powershell -ArgumentList "-NoExit", "-Command", "json-server --watch .\db.json .\server.js"
+  Start-Process powershell -ArgumentList "-NoExit", "-Command", "json-server --watch .\db.json"
   Start-Sleep -Seconds 2
   # Lancer ng serve dans une nouvelle fenêtre
   Start-Process powershell -ArgumentList "-NoExit", "-Command", "ng serve"
