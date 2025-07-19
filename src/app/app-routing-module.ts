@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'add-course', component: AddCourse, canActivate: [canActivateAdmin]},
   {path: 'login', component: Login, canActivate: [authGuard]},
   {path: 'about', component: About},
-  {path: 'register', component: Register},
+  {path: 'register', component: Register}, // todo rendre registe accessible only to unauthenticated users
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

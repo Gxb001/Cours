@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {CourseService} from '../../service/course';
+import {UserService} from '../../service/user';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +14,11 @@ export class Register {
   error: { message: string } | null = null;
   successMessage: string | null = null;
 
-  constructor(private http: HttpClient, private router: Router, private courseService: CourseService) {
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) {
   }
 
   onSubmit() {
-    this.courseService.createUser(this.newUser).subscribe({
+    this.userService.createUser(this.newUser).subscribe({
       next: () => {
         this.successMessage = 'Inscription réussie ! Vous pouvez maintenant vous connecter.';
         this.error = null;

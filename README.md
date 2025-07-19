@@ -7,6 +7,7 @@ Cette application web, développée avec Angular, permet de gérer des cours en 
 ## Fonctionnement
 
 - **Connexion** : Les utilisateurs se connectent via une page de login avec un nom d'utilisateur et un mot de passe. Les rôles ("admin" ou "user") déterminent les permissions.
+- **Inscription** : Les utilisateurs peuvent s'inscrire via la page de création de compte 'user'.
 - **Pages principales** :
   - **Accueil** : Page d'accueil avec une introduction.
   - **Liste des cours** : Affiche tous les cours disponibles.
@@ -24,6 +25,7 @@ L'API est simulée avec **json-server**, qui fournit une fausse API REST basée 
 - `PUT /courses/:id` : Met à jour un cours.
 - `DELETE /courses/:id` : Supprime un cours.
 - `GET /users` : Récupère la liste des utilisateurs pour l'authentification.
+- `POST /users` : Crée un nouvel utilisateur (inscription).
 
 Le fichier `db.json` contient les données initiales (cours et utilisateurs), et un script `server.js` est utilisé pour forcer la génération des `id` en entier.
 
