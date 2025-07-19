@@ -5,7 +5,9 @@ import {CourseList} from './components/course-list/course-list';
 import {CourseDetails} from './components/course-details/course-details';
 import {AddCourse} from './components/add-course/add-course';
 import {Login} from './components/login/login';
-import {authGuard, canActivateAdmin} from './auth-guard';
+import {authGuard, canActivateAdmin} from './guards/auth-guard';
+import {About} from './components/about/about';
+import {Register} from './components/register/register';
 
 
 const routes: Routes = [
@@ -14,6 +16,8 @@ const routes: Routes = [
   {path: 'course/:id', component: CourseDetails, canActivate: [canActivateAdmin]},
   {path: 'add-course', component: AddCourse, canActivate: [canActivateAdmin]},
   {path: 'login', component: Login, canActivate: [authGuard]},
+  {path: 'about', component: About},
+  {path: 'register', component: Register},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

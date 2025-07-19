@@ -1,6 +1,9 @@
 <div class="course-list-container">
-  <section class="header-section text-center py-5">
-    <h2 class="display-5 fw-bold">Liste des Cours</h2>
+  <section class="header-section text-center py-5 text-white">
+    <div class="container">
+      <h2 class="display-4 fw-bold animate__animated animate__fadeInDown">Liste des Cours</h2>
+      <p class="lead text-light animate__animated animate__fadeInUp">Découvrez et gérez vos cours avec facilité.</p>
+    </div>
   </section>
 
   <section class="courses-section py-5">
@@ -9,24 +12,41 @@
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           @for (course of courses; track course.id) {
             <div class="col">
-              <div class="card h-100 shadow-sm course-card">
+              <div class="card h-100 shadow-lg border-0 course-card">
+                <div class="card-img-top text-center py-3 bg-light">
+                  <i class="bi bi-book fs-1 text-primary"></i>
+                </div>
                 <div class="card-body">
-                  <h5 class="card-title">{{ course.name }}</h5>
-                  <p class="card-text">{{ course.description }}</p>
-                  <a routerLink="/course/{{course.id}}" class="btn btn-primary stretched-link">Modifier le cours</a>
+                  <h5 class="card-title fw-semibold">{{ course.name }}</h5>
+                  <p class="card-text text-muted">{{ course.description }}</p>
+                  <a
+                    routerLink="/course/{{course.id}}"
+                    routerLinkActive="active"
+                    class="btn btn-outline-primary stretched-link"
+                    [attr.aria-label]="'Modifier le cours ' + course.name"
+                  >
+                    Modifier le cours
+                  </a>
                 </div>
               </div>
             </div>
           }
         </div>
       } @else {
-        <div class="text-center">
-          <p class="lead">Aucun cours disponible.</p>
+        <div class="text-center py-5">
+          <i class="bi bi-exclamation-circle fs-1 text-muted mb-3"></i>
+          <p class="lead text-muted">Aucun cours disponible pour le moment.</p>
         </div>
       }
 
       <div class="text-center mt-5">
-        <a class="btn btn-success btn-lg" routerLink="/add-course">Ajouter un cours</a>
+        <a
+          aria-label="Ajouter un nouveau cours"
+          class="btn btn-success btn-lg btn-cta"
+          routerLink="/add-course"
+        >
+          <i class="bi bi-plus-circle me-2"></i> Ajouter un cours
+        </a>
       </div>
     </div>
   </section>

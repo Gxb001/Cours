@@ -1,24 +1,64 @@
-<div class="container mt-5">
-  @if (accessDenied) {
-    <div class="alert alert-danger text-center" role="alert">
-      Vous n'avez pas accès à cette fonctionnalité en tant qu'utilisateur lambda. Seuls les administrateurs peuvent
-      ajouter des cours.
-      <a routerLink="/courses" class="btn btn-secondary mt-3">Retour aux cours</a>
+<div class="add-course-container">
+  <section class="header-section text-center py-5 text-white">
+    <div class="container">
+      <h2 class="display-4 fw-bold animate__animated animate__fadeInDown">Ajouter un Cours</h2>
+      <p class="lead text-light animate__animated animate__fadeInUp">Créez un nouveau cours avec facilité.</p>
     </div>
-  } @else {
-    <h2>Ajouter un Cours</h2>
-    <form #courseForm="ngForm" (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-        <label for="name" class="form-label">Nom</label>
-        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newCourse.name" required>
-      </div>
-      <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" [(ngModel)]="newCourse.description"
-                  required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!courseForm.valid">Ajouter</button>
-      <a routerLink="/courses" class="btn btn-secondary ms-2">Annuler</a>
-    </form>
-  }
+  </section>
+
+  <section class="add-course-section py-5">
+    <div class="container">
+      @if (accessDenied) {
+        <div class="alert alert-danger text-center animate__animated animate__fadeIn" role="alert">
+          Vous n'avez pas accès à cette fonctionnalité en tant qu'utilisateur lambda. Seuls les administrateurs peuvent
+          ajouter des cours.
+          <a routerLink="/courses" class="btn btn-secondary mt-3" aria-label="Retour aux cours">Retour aux cours</a>
+        </div>
+      } @else {
+        <div class="card shadow-lg border-0">
+          <div class="card-body p-4 p-md-5">
+            <form #courseForm="ngForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="name" class="form-label">Nom</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  [(ngModel)]="newCourse.name"
+                  required
+                  aria-label="Nom du cours"
+                  placeholder="Entrez le nom du cours"
+                >
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                  class="form-control"
+                  id="description"
+                  name="description"
+                  [(ngModel)]="newCourse.description"
+                  required
+                  aria-label="Description du cours"
+                  placeholder="Entrez la description du cours"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div class="d-flex gap-2">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-cta"
+                  [disabled]="!courseForm.valid"
+                  aria-label="Ajouter le cours"
+                >
+                  Ajouter
+                </button>
+                <a routerLink="/courses" class="btn btn-secondary" aria-label="Annuler l'ajout">Annuler</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
 </div>

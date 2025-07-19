@@ -11,13 +11,17 @@ import {CourseDetails} from './components/course-details/course-details';
 import {AddCourse} from './components/add-course/add-course';
 import {HttpClientModule} from '@angular/common/http';
 import {Login} from './components/login/login';
-import {FormsModule} from "@angular/forms"; // Ajouté ici
+import {FormsModule} from "@angular/forms";
+import {About} from './components/about/about';
+import {Register} from './components/register/register'; // Ajouté ici
 
 @NgModule({
   declarations: [
     App,
     Footer,
-    Home
+    Home,
+    About,
+    Register
   ],
   imports: [
     BrowserModule,

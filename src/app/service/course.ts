@@ -8,6 +8,12 @@ interface Course {
   description: string;
 }
 
+interface User {
+  username: string;
+  password: string;
+  role: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -45,5 +51,14 @@ export class CourseService {
 
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/users`);
+  }
+
+  createUser(user: User): Observable<User> {
+    return this.getUsers().pipe(
+      switchMap(users => {
+        const newUser = {...user, id: String(users.length + 1)};
+        return this.http.post<User>(`${this.apiUrl}/users`, newUser);
+      })
+    );
   }
 }

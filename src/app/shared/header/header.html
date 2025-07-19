@@ -1,26 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Course Management</a>
-    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-            data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+  <div class="container">
+    <a aria-label="Retour à l'accueil" class="navbar-brand fw-bold d-flex align-items-center" routerLink="/">
+      <i class="bi bi-mortarboard-fill me-2 text-primary"></i>
+      Course Management
+    </a>
+    <button
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Ouvrir le menu de navigation"
+      class="navbar-toggler"
+      data-bs-target="#navbarNav"
+      data-bs-toggle="collapse"
+      type="button"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+          <a [routerLinkActiveOptions]="{ exact: true }" class="nav-link" routerLink="/" routerLinkActive="active">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/courses" routerLinkActive="active">Courses</a>
+          <a class="nav-link" routerLink="/courses" routerLinkActive="active">Cours</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">À propos</a>
         </li>
         <li class="nav-item">
           @if (!isLoggedIn()) {
-            <a class="nav-link" routerLink="/login">Se connecter</a>
+            <a class="btn btn-outline-primary btn-sm ms-3" routerLink="/login" aria-label="Se connecter">Se
+              connecter</a>
           } @else {
-            <a class="nav-link" (click)="logout()" style="cursor: pointer;">Deconnexion</a>
+            <a class="btn btn-outline-danger btn-sm ms-3" (click)="logout()" style="cursor: pointer;"
+               aria-label="Se déconnecter">Déconnexion</a>
           }
         </li>
       </ul>

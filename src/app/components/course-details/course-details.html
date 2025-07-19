@@ -1,29 +1,93 @@
-<div class="container mt-5">
-  @if (course) {
-    <h2>{{ course.name }}</h2>
-    @if (editMode) {
-      <form (ngSubmit)="saveChanges()">
-        <div class="mb-3">
-          <label for="name" class="form-label">Nom</label>
-          <input type="text" class="form-control" id="name" [(ngModel)]="editedCourse.name" name="name" required>
+<div class="course-details-container">
+  <section class="header-section text-center py-5 text-white">
+    <div class="container">
+      <h2 class="display-4 fw-bold animate__animated animate__fadeInDown">Détails du Cours</h2>
+      <p class="lead text-light animate__animated animate__fadeInUp">{{ course?.name || 'Chargement...' }}</p>
+    </div>
+  </section>
+
+  <section class="course-details-section py-5">
+    <div class="container">
+      @if (course) {
+        <div class="row g-4">
+          <div class="col-12">
+            @if (editMode) {
+              <div class="card shadow-lg border-0">
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="card-title fw-bold mb-4">Modifier le cours</h3>
+                  <form (ngSubmit)="saveChanges()">
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Nom</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        [(ngModel)]="editedCourse.name"
+                        name="name"
+                        required
+                        aria-label="Nom du cours"
+                        placeholder="Entrez le nom du cours"
+                      >
+                    </div>
+                    <div class="mb-3">
+                      <label for="description" class="form-label">Description</label>
+                      <textarea
+                        class="form-control"
+                        id="description"
+                        [(ngModel)]="editedCourse.description"
+                        name="description"
+                        required
+                        aria-label="Description du cours"
+                        placeholder="Entrez la description du cours"
+                        rows="4"
+                      ></textarea>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <button type="submit" class="btn btn-primary btn-cta" aria-label="Sauvegarder les modifications">
+                        Sauvegarder
+                      </button>
+                      <button type="button" class="btn btn-secondary" (click)="toggleEdit()"
+                              aria-label="Annuler les modifications">
+                        Annuler
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            } @else {
+              <div class="card shadow-lg border-0">
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="card-title fw-bold mb-4">{{ course.name }}</h3>
+                  <p class="card-text text-muted mb-4">{{ course.description }}</p>
+                  <div class="mb-4">
+                    <strong>Durée :</strong> {{ course.duration || 'Non spécifiée' }} heures<br>
+                    <strong>Instructeur :</strong> {{ course.instructor || 'Non spécifié' }}<br>
+                    <strong>Date de début
+                      :</strong> {{ course.startDate ? (course.startDate | date:'dd/MM/yyyy') : 'Non définie' }}
+                  </div>
+                  <div class="d-flex gap-2 justify-content-end">
+                    <a routerLink="/courses" class="btn btn-secondary"
+                       aria-label="Retour à la liste des cours">Retour</a>
+                    @if (isAdmin) {
+                      <button class="btn btn-warning me-2" (click)="toggleEdit()" aria-label="Modifier le cours">
+                        Modifier
+                      </button>
+                      <button class="btn btn-danger" (click)="deleteCourse()" aria-label="Supprimer le cours">
+                        Supprimer
+                      </button>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea class="form-control" id="description" [(ngModel)]="editedCourse.description" name="description"
-                    required></textarea>
+      } @else {
+        <div class="text-center py-5">
+          <i class="bi bi-exclamation-circle fs-1 text-muted mb-3"></i>
+          <p class="lead text-muted">Cours non trouvé.</p>
         </div>
-        <button type="submit" class="btn btn-primary me-2">Sauvegarder</button>
-        <button type="button" class="btn btn-secondary" (click)="toggleEdit()">Annuler</button>
-      </form>
-    } @else {
-      <p><strong>Description :</strong> {{ course.description }}</p>
-      <a routerLink="/courses" class="btn btn-secondary me-2">Retour</a>
-      @if (isAdmin) {
-        <button class="btn btn-warning me-2" (click)="toggleEdit()">Modifier</button>
-        <button class="btn btn-danger" (click)="deleteCourse()">Supprimer</button>
       }
-    }
-  } @else {
-    <p>Cours non trouvé.</p>
-  }
+    </div>
+  </section>
 </div>

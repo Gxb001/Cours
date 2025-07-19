@@ -7,5 +7,7 @@ import {Component} from '@angular/core';
   styleUrl: './home.css'
 })
 export class Home {
-
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('currentUser');
+  }
 }

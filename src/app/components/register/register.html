@@ -1,0 +1,68 @@
+<div class="register-container">
+  <section class="header-section text-center py-5 text-white">
+    <div class="container">
+      <h2 class="display-4 fw-bold animate__animated animate__fadeInDown">Inscription</h2>
+      <p class="lead text-light animate__animated animate__fadeInUp">Rejoignez notre communauté d'apprentissage.</p>
+    </div>
+  </section>
+
+  <section class="register-section py-5">
+    <div class="container">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-4 p-md-5">
+          <form #registerForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!successMessage">
+            <div class="mb-3">
+              <label class="form-label" for="username">Nom d'utilisateur</label>
+              <input
+                [(ngModel)]="newUser.username"
+                aria-label="Nom d'utilisateur"
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Choisissez un nom d'utilisateur"
+                required
+                type="text"
+              >
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="password">Mot de passe</label>
+              <input
+                [(ngModel)]="newUser.password"
+                aria-label="Mot de passe"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Choisissez un mot de passe"
+                required
+                type="password"
+              >
+            </div>
+            @if (error) {
+              <div class="alert alert-danger animate__animated animate__fadeIn" role="alert">
+                {{ error.message }}
+              </div>
+            }
+            <div class="d-flex gap-2">
+              <button
+                [disabled]="!registerForm.valid"
+                aria-label="S'inscrire"
+                class="btn btn-primary btn-cta"
+                type="submit"
+              >
+                S'inscrire
+              </button>
+              <a aria-label="Retour à la connexion" class="btn btn-secondary" routerLink="/login">Annuler</a>
+            </div>
+          </form>
+          @if (successMessage) {
+            <div class="text-center py-5">
+              <i class="bi bi-check-circle fs-1 text-success mb-3"></i>
+              <p class="lead text-success">{{ successMessage }}</p>
+              <a routerLink="/login" class="btn btn-success mt-3" aria-label="Se connecter">Se connecter</a>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,12 +1,14 @@
-.list-group-item.course-hover-effect {
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  border: none;
-  border-radius: 8px;
-  padding: 1rem;
+.app-container {
+  position: relative;
+  min-height: 100vh;
 }
 
-.list-group-item.course-hover-effect:hover {
-  background-color: #e9ecef;
-  transform: translateX(8px) scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.content {
+  padding-top: 70px;
+}
+
+@media (max-width: 991px) {
+  .content {
+    padding-top: 60px;
+  }
 }

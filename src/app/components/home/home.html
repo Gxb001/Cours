@@ -1,46 +1,59 @@
 <div class="home-container">
   <section class="hero-section text-white text-center">
     <div class="hero-overlay">
-      <div class="hero-content">
-        <h1 class="display-4 fw-bold">Bienvenue sur Course Management</h1>
-        <p class="lead mb-4">Gérez vos cours avec simplicité et efficacité.</p>
-        <a class="btn btn-primary btn-lg" routerLink="/courses">Découvrir les cours</a>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="display-3 fw-bold animate__animated animate__fadeInDown">Bienvenue sur Course Management</h1>
+          <p class="lead mb-4 animate__animated animate__fadeInUp">Gérez vos cours avec simplicité et efficacité.</p>
+          <a aria-label="Découvrir les cours" class="btn btn-primary btn-lg btn-cta animate__animated animate__pulse"
+             routerLink="/courses">Découvrir les cours</a>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="features-section py-5">
     <div class="container">
-      <h2 class="text-center mb-5">Pourquoi choisir notre application ?</h2>
+      <h2 class="text-center mb-5 fw-bold">Pourquoi choisir notre application ?</h2>
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
+          <div class="card h-100 shadow-lg border-0 feature-card">
             <div class="card-body text-center">
-              <i class="bi bi-book-fill fs-1 text-primary mb-3"></i>
-              <h5 class="card-title">Cours variés</h5>
-              <p class="card-text">Accédez à une large gamme de cours adaptés à vos besoins.</p>
+              <i class="bi bi-book fs-1 text-primary mb-3"></i>
+              <h5 class="card-title fw-semibold">Cours variés</h5>
+              <p class="card-text text-muted">Accédez à une large gamme de cours adaptés à vos besoins.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
+          <div class="card h-100 shadow-lg border-0 feature-card">
             <div class="card-body text-center">
-              <i class="bi bi-people-fill fs-1 text-primary mb-3"></i>
-              <h5 class="card-title">Communauté</h5>
-              <p class="card-text">Rejoignez une communauté d'apprenants passionnés.</p>
+              <i class="bi bi-people fs-1 text-primary mb-3"></i>
+              <h5 class="card-title fw-semibold">Communauté</h5>
+              <p class="card-text text-muted">Rejoignez une communauté d'apprenants passionnés.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
+          <div class="card h-100 shadow-lg border-0 feature-card">
             <div class="card-body text-center">
-              <i class="bi bi-gear-fill fs-1 text-primary mb-3"></i>
-              <h5 class="card-title">Facile à utiliser</h5>
-              <p class="card-text">Interface intuitive pour une expérience optimale.</p>
+              <i class="bi bi-gear fs-1 text-primary mb-3"></i>
+              <h5 class="card-title fw-semibold">Facile à utiliser</h5>
+              <p class="card-text text-muted">Interface intuitive pour une expérience optimale.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  @if (!isLoggedIn()) {
+    <section class="cta-section py-5 text-center text-white">
+      <div class="container">
+        <h2 class="fw-bold mb-4">Prêt à commencer votre apprentissage ?</h2>
+        <a class="btn btn-success btn-lg btn-cta" routerLink="/register" aria-label="S'inscrire maintenant">S'inscrire
+          maintenant</a>
+      </div>
+    </section>
+  }
 </div>

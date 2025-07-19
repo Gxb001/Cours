@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CourseService} from '../../service/course';
-import {RouterLink} from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 
 interface Course {
   id: string;
@@ -12,7 +12,8 @@ interface Course {
   selector: 'app-course-list',
   templateUrl: './course-list.html',
   imports: [
-    RouterLink
+    RouterLink,
+    RouterLinkActive
   ],
   styleUrl: './course-list.css'
 })

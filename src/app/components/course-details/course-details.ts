@@ -2,13 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {CourseService} from '../../service/course';
 import {FormsModule} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-course-details',
   templateUrl: './course-details.html',
   imports: [
     RouterLink,
-    FormsModule
+    FormsModule,
+    DatePipe
   ],
   styleUrl: './course-details.css'
 })

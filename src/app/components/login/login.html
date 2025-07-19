@@ -3,29 +3,67 @@
     <div class="container">
       <div class="row justify-content-center align-items-center min-vh-100">
         <div class="col-12 col-md-6 col-lg-4">
-          <div class="card shadow-sm">
-            <div class="card-body p-4">
-              <h2 class="text-center mb-4">Connexion</h2>
+          <div class="card shadow-lg border-0 text-center">
+            <div class="card-body p-4 p-md-5">
+              <h2 class="mb-4 fw-bold">Connexion</h2>
               @if (error) {
-                <div class="alert"
-                     [class.alert-danger]="error.type === 'username' || error.type === 'password' || error.type === 'general'"
-                     role="alert">
+                <div
+                  class="alert alert-danger animate__animated animate__fadeIn"
+                  role="alert"
+                  aria-live="assertive"
+                >
                   {{ error.message }}
                 </div>
               }
-              <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+              <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="text-start">
                 <div class="mb-3">
                   <label class="form-label" for="username">Nom d'utilisateur</label>
-                  <input [(ngModel)]="credentials.username" class="form-control" id="username" name="username"
-                         required type="text">
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="bi bi-person-fill"></i>
+                    </span>
+                    <input
+                      [(ngModel)]="credentials.username"
+                      aria-label="Nom d'utilisateur"
+                      class="form-control"
+                      id="username"
+                      name="username"
+                      placeholder="Entrez votre nom d'utilisateur"
+                      required
+                      type="text"
+                    >
+                  </div>
                 </div>
                 <div class="mb-3">
                   <label class="form-label" for="password">Mot de passe</label>
-                  <input [(ngModel)]="credentials.password" class="form-control" id="password" name="password"
-                         required type="password">
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="bi bi-lock-fill"></i>
+                    </span>
+                    <input
+                      [(ngModel)]="credentials.password"
+                      aria-label="Mot de passe"
+                      class="form-control"
+                      id="password"
+                      name="password"
+                      placeholder="Entrez votre mot de passe"
+                      required
+                      type="password"
+                    >
+                  </div>
                 </div>
-                <button [disabled]="!loginForm.valid" class="btn btn-primary w-100 py-2" type="submit">Se connecter
+                <button
+                  [disabled]="!loginForm.valid"
+                  aria-label="Se connecter"
+                  class="btn btn-primary w-100 py-2 btn-cta"
+                  type="submit"
+                >
+                  Se connecter
                 </button>
+                <div class="text-center mt-3">
+                  <a aria-label="Créer un compte" class="text-muted small" routerLink="/register">Pas de compte ?
+                    S'inscrire</a>
+                </div>
               </form>
             </div>
           </div>
