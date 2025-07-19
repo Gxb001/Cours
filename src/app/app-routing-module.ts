@@ -8,6 +8,7 @@ import {Login} from './components/login/login';
 import {authGuard, canActivateAdmin} from './guards/auth-guard';
 import {About} from './components/about/about';
 import {Register} from './components/register/register';
+import {registerGuard} from './guards/register-guard';
 
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
   {path: 'add-course', component: AddCourse, canActivate: [canActivateAdmin]},
   {path: 'login', component: Login, canActivate: [authGuard]},
   {path: 'about', component: About},
-  {path: 'register', component: Register}, // todo rendre registe accessible only to unauthenticated users
+  {path: 'register', component: Register, canActivate: [registerGuard]},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
