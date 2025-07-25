@@ -10,50 +10,54 @@
     <div class="container">
       <div class="card shadow-lg border-0">
         <div class="card-body p-4 p-md-5">
-          <form #registerForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!successMessage">
-            <div class="mb-3">
-              <label class="form-label" for="username">Nom d'utilisateur</label>
-              <input
-                [(ngModel)]="newUser.username"
-                aria-label="Nom d'utilisateur"
-                class="form-control"
-                id="username"
-                name="username"
-                placeholder="Choisissez un nom d'utilisateur"
-                required
-                type="text"
-              >
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="password">Mot de passe</label>
-              <input
-                [(ngModel)]="newUser.password"
-                aria-label="Mot de passe"
-                class="form-control"
-                id="password"
-                name="password"
-                placeholder="Choisissez un mot de passe"
-                required
-                type="password"
-              >
-            </div>
-            @if (error) {
-              <div class="alert alert-danger animate__animated animate__fadeIn" role="alert">
-                {{ error.message }}
+          @if (!successMessage) {
+            <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label class="form-label" for="username">Nom d'utilisateur</label>
+                <input
+                  [(ngModel)]="newUser.username"
+                  aria-label="Nom d'utilisateur"
+                  class="form-control"
+                  id="username"
+                  name="username"
+                  placeholder="Choisissez un nom d'utilisateur"
+                  required
+                  type="text"
+                  pattern="^[a-zA-Z0-9_]+$"
+                  title="Seuls les lettres, chiffres et le tiret bas sont autorisés."
+                >
               </div>
-            }
-            <div class="d-flex gap-2">
-              <button
-                [disabled]="!registerForm.valid"
-                aria-label="S'inscrire"
-                class="btn btn-primary btn-cta"
-                type="submit"
-              >
-                S'inscrire
-              </button>
-              <a aria-label="Retour à la connexion" class="btn btn-secondary" routerLink="/login">Annuler</a>
-            </div>
-          </form>
+              <div class="mb-3">
+                <label class="form-label" for="password">Mot de passe</label>
+                <input
+                  [(ngModel)]="newUser.password"
+                  aria-label="Mot de passe"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Choisissez un mot de passe"
+                  required
+                  type="password"
+                >
+              </div>
+              @if (error) {
+                <div class="alert alert-danger animate__animated animate__fadeIn" role="alert">
+                  {{ error.message }}
+                </div>
+              }
+              <div class="d-flex gap-2">
+                <button
+                  [disabled]="!registerForm.valid"
+                  aria-label="S'inscrire"
+                  class="btn btn-primary btn-cta"
+                  type="submit"
+                >
+                  S'inscrire
+                </button>
+                <a aria-label="Retour à la connexion" class="btn btn-secondary" routerLink="/login">Annuler</a>
+              </div>
+            </form>
+          }
           @if (successMessage) {
             <div class="text-center py-5">
               <i class="bi bi-check-circle fs-1 text-success mb-3"></i>

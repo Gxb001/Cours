@@ -88,6 +88,12 @@
       "username": "user",
       "password": "user123",
       "role": "user"
+    },
+    {
+      "id": "3",
+      "username": "azeaze",
+      "password": "zaeae",
+      "role": "user"
     }
   ]
 }
