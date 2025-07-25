@@ -2,8 +2,8 @@
   background: linear-gradient(135deg, #1a202c, #2d3748);
   font-family: 'Inter', 'Arial', sans-serif;
   padding: 3rem 0;
-  position: relative;
   width: 100%;
+  flex-shrink: 0;
 }
 
 .footer h5 {

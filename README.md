@@ -32,10 +32,10 @@ Le fichier `db.json` contient les données initiales (cours et utilisateurs), et
 ## Architecture
 
 - **Frontend** : Développé avec Angular 20+, utilisant des composants organisés dans des dossiers (`components`, `shared`, `service`).
-  - **Composants** : `home`, `course-list`, `course-details`, `add-course`, `login`, `header`, `footer`.
+  - **Composants** : `home`, `course-list`, `course-details`, `add-course`, `login`, `header`, `footer`, `about`.
   - **Services** : `course.service` gère les appels API.
   - **Guards** : `auth.guard` protège les routes admin.
-- **Styles** : Utilisation de Bootstrap pour la mise en page, avec CSS personnalisé par composant.
+- **Styles** : Utilisation de Bootstrap pour la mise en page, avec CSS personnalisé par composant & icons.
 - **Routing** : Géré via `app-routing.module.ts` avec protection des routes.
 
 ## Lancement du site
@@ -91,7 +91,7 @@ Deux scripts sont fournis pour démarrer l'API et le serveur Angular, puis ouvri
 
 1. Ouvre un terminal et lance l'API :
    ```bash
-   json-server --watch .\db.json .\server.js
+   json-server --watch .\db.json
    ```
 2. Ouvre un autre terminal et lance Angular :
    ```bash
@@ -103,11 +103,5 @@ Deux scripts sont fournis pour démarrer l'API et le serveur Angular, puis ouvri
 
 - Si une erreur 404 apparaît, vérifie que `db.json` est correct et que `json-server` est bien lancé.
 - Ajuste l'URL ou le port si nécessaire (ex. : `ng serve --port 4201`).
-
-## Contribution
-
-- Clone le dépôt.
-- Installe les dépendances avec `npm install`.
-- Suis les étapes de lancement ci-dessus.
 
 ---
