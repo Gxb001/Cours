@@ -1,10 +1,9 @@
-/* General styles */
+
 .home-container {
   font-family: 'Inter', 'Arial', sans-serif;
   background-color: #f5f7fa;
 }
 
-/* Hero Section */
 .hero-section {
   position: relative;
   height: 70vh;
@@ -50,7 +49,6 @@
   background-color: #0069d9;
 }
 
-/* Features Section */
 .features-section {
   background-color: #ffffff;
   padding: 5rem 0;
@@ -85,7 +83,6 @@
   color: #007bff;
 }
 
-/* CTA Section */
 .cta-section {
   background: linear-gradient(135deg, #28a745, #20c997);
   padding: 4rem 0;
